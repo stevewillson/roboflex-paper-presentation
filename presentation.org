@@ -1,0 +1,94 @@
+#+title: Robowflex: Robot Motion Planning with MoveIt Made Easy
+#+author: Zachary Kingston and Lydia E. Kavraki @@latex:\\@@ Presented By: Steve Willson
+#+date: 2023-04-27
+#+email: swillson@mines.edu
+
+#+options: todo:nil
+#+options: H:2
+#+options: toc:t num:t title:t
+#+options: ':nil *:t -:t ::t <:t \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil 
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:nil inline:t
+#+options: timestamp:t |:nil 
+
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation,bigger]
+#+BEAMER_THEME: Rochester [height=20pt]
+
+#+Language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+startup: beamer
+
+* Introduction - Problem
+** Introduction
+*** MoveIt - Software library for motion planning
+
+*** MoveIt Advantages:
+- Widely adopted - used by NASA, Google, Microsoft, etc
+- Easy to setup for new robots - 150 robots available
+- Easy to integrate with a ROS enabled system
+- Actively developed with large community
+
+*** MoveIt Disadvantages:
+- Difficult to use / modify code
+
+*** Roboflex simplifies the use of MoveIt and creates a high-level API for common use-cases while exposing underlying structures
+
+* Contribution - Robowflex Software Library
+** Robowflex Software Library
+*** Roboflex is a software library that leverages the MoveIt library and Robot Operating System (ROS)
+- Provides an API for MoveIt 
+
+*** Primary Uses
+- Developing new motion planners
+- Evaluating motion planners
+- Constructing complex problems that use motion planning
+  
+*** Also provides visualization capabilities
+
+* Robowflex Library Overview
+** Design Goals
+*** Goals
+- Clarity of Interface - use motion planning concepts for interface design
+- Minimize ROS - encapsulate ROS to enable writing independent programs
+- Leverage MoveIt's Ubiquity - robots supported in MoveIt are also supported in Robowflex
+- Unrestricted Access and Integration - provide way to access all underlying features
+- Consistency Across Versions - Robowflex code is not tied to a specific version of ROS (Melodic or Noetic)
+
+** Roboflex Design
+*** Robowflex provides wrappers around core MoveIt features
+
+*** Primary Building Blocks
+- Representation of the robot's kinematics
+- Collision environment
+- Motion planner
+
+** Robowflex Core Modules
+*** Core Modules
+- Input and Output - provides the ability to handle ROS packages, XML files, and YAML files
+- Robot Kinematics - loads appropriate files to configure a robot without requiring a MoveIt launch file
+- Collision Environment - hanldes loading collision environments
+- Motion Planner - plugin-based system to load a motion planning pipeline
+- Robowflex Scripting - loads MoveIt's internal structures in the Robowflex program, provides access to the structures in these programs
+- Integrations - provides compatability with other robotics libraries through auxiliary modules
+  - Examples OMPL and DART
+
+* Use Cases
+** Use Cases
+*** Benchmarking
+- Can be used to benchmark motion planners using various scenes
+
+*** Task and Motion Planning
+- Enables use of many instances of robots, scenes, and motion planners within the same script
+
+*** Robonaut 2 (NASA)
+- Used Robowflex to evaluate motion plans for a robot that will move across the International Space Station
+
+* Summary
+** Summary
+*** Robowflex Software Library
+- Provides an augmented API to build motion planning queries through a single program
+*** Core Advantage over MoveIt
+- Ability to easily access and modify core data structures within the program itself
+
